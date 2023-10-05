@@ -69,7 +69,8 @@ async updateproduct(body:any){
   const updateObject = Object.fromEntries(
     Object.entries(body).filter(([key, value]) =>  value !== '')
 );
-
+// console.log(updateObject);
+// return updateObject
  await this.productModule.findByIdAndUpdate(new mongoose.Types.ObjectId(body.id),updateObject)
 
   return{status:HttpStatus.ACCEPTED,

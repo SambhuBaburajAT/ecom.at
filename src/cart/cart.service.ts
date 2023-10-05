@@ -55,22 +55,22 @@ export class CartService {
       }).save();
     }
 
-    return CartData;
+    return {status:HttpStatus.ACCEPTED};
   }
-
+ 
   async decreaseItem(user: any, id: CreateCartDto) {
     console.log('im here');
     console.log(id, user.id);
     const CartData = await this.cartModel.findOne({
       User: new mongoose.Types.ObjectId(user.id),
     });
-
+console.log(CartData);
     const findIndex = CartData.products.findIndex((data) => {
       console.log(data.product_id, id.id);
       return data.product_id.toString() == id.id;
     });
     console.log(findIndex);
-    if (findIndex == -1) {
+    if (findIndex == -1) { 
       return { status: HttpStatus.BAD_GATEWAY };
     } else {
       console.log(CartData.products[findIndex]);
@@ -89,7 +89,8 @@ export class CartService {
     const Cart = await this.cartModel
       .findOne({ User: new mongoose.Types.ObjectId(user.id) })
       .populate('products.product_id');
-    return Cart;
+    return Cart?Cart:{status:"no item"};
+
   }
 
   async DeleteItem(item: any, id: any) {

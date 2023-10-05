@@ -11,14 +11,9 @@ export class PaymentServicestripe {
   async createPaymentLink(price:number,User:any) {
 
 
-    const body = {
-      source:,
-      amount: 20000,
-      currency: "usd"
-    };
 
 
-
+    
     const paymentIntent = await stripe.paymentIntents.create({
       amount: 100*100, // Amount in cents
       currency: 'inr',

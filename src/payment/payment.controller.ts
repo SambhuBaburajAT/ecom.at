@@ -1,4 +1,4 @@
-import { Controller, Get, Request, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Request, UseGuards } from '@nestjs/common';
 import { PaymentService } from './payment.service';
 import { PaymentServicestripe } from 'src/stripe/payservice';
 import { UserAuthGuard } from 'src/user-auth/user-auth.guard';
@@ -10,7 +10,7 @@ export class PaymentController {
     private readonly paymentStripe: PaymentServicestripe,
   ) {}
 
-  @Get()
+  @Get('') 
   paymentGatewat(@Request() res: any) {
 
 console.log('hifewhfferf');

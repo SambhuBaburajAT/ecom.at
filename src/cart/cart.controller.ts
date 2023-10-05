@@ -35,7 +35,7 @@ return this.cartService.getProduct(req.user)
 
 }
 @Delete('cartremoveitem')
-DeleteItem(@Request() req:any,@Body()id:string){
+DeleteItem(@Request() req:any,@Body()id:CreateCartDto){
 return this.cartService.DeleteItem(req.user,id)
 }
 
